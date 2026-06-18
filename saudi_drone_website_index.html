@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi SkyTech | Enterprise Drone Solutions KSA</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #006C35; /* Saudi Green */
+            --primary-dark: #004d25;
+            --secondary: #1a1a1a; /* Clean Deep Dark */
+            --accent: #C5A059; /* Elegant Gold */
+            --light-bg: #f8f9fa;
+            --text-dark: #222222;
+            --text-muted: #666666;
+            --white: #ffffff;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .text-center { text-align: center; }
+        .section-padding { padding: 80px 0; }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--secondary);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(26, 26, 26, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-item a {
+            color: #dddddd;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 10px 5px;
+        }
+
+        .nav-item a:hover, .nav-item a.active {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 32px;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Product Catalog (Tabs & Cards) */
+        .catalog-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: var(--light-bg);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+            display: none; /* Controlled by JS */
+        }
+        
+        .product-card.show {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-weight: bold;
+            color: #aaa;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 3px;
+        }
+        
+        .product-tag.agras { background-color: #2e7d32; }
+        .product-tag.enterprise { background-color: #1565c0; }
+        .product-tag.mapping { background-color: #00838f; }
+        .product-tag.cinema { background-color: #6a1b9a; }
+        .product-tag.consumer { background-color: #e65100; }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            height: 65px;
+            overflow: hidden;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .product-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Services & Verticals Section */
+        .services-section {
+            background-color: var(--light-bg);
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card:hover .service-icon {
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .service-card:hover p {
+            color: #cccccc;
+        }
+
+        /* Training & GACA Compliance */
+        .training-section {
+            background: linear-gradient(rgba(0,108,53,0.9), rgba(0,77,37,0.95)), url('https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--white);
+        }
+
+        .training-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .training-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--secondary);
+            padding: 5px 15px;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .training-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .training-content p {
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .training-features {
+            list-style: none;
+        }
+
+        .training-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .training-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .training-visual {
+            background-color: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Support Section */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .support-box {
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .support-box h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Contact Section & Form */
+        .contact-section {
+            background-color: var(--light-bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info-panel h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item-icon {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: #bbbbbb;
+            padding: 60px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbbbbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .training-container, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: 0.3s;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">SAUDI <span>SKYTECH</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="active">Home</a></li>
+                <li class="nav-item"><a href="#catalog">Products</a></li>
+                <li class="nav-item"><a href="#services">Services</a></li>
+                <li class="nav-item"><a href="#training">Training</a></li>
+                <li class="nav-item"><a href="#support">Support</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Next-Gen <span>Enterprise Drone Solutions</span> in Saudi Arabia</h1>
+                <p>Empowering Vision 2030 across Agriculture, Mega-Projects, Industrial Inspections, and Cinematic Mapping with industrial-grade UAV technology and GACA certified training.</p>
+                <div class="hero-btns">
+                    <a href="#catalog" class="btn btn-primary">Explore Products</a>
+                    <a href="#contact" class="btn btn-outline">Request Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section class="section-padding" id="catalog">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Product Catalog</h2>
+                <p>Discover our range of advanced commercial, agricultural, mapping, and consumer hardware from leading global manufacturers like DJI Enterprise.</p>
+            </div>
+
+            <!-- Tab Filtering Switches -->
+            <div class="catalog-tabs">
+                <button class="tab-btn active" data-filter="all">All Drones</button>
+                <button class="tab-btn" data-filter="agras">DJI Agras (Agriculture)</button>
+                <button class="tab-btn" data-filter="enterprise">DJI Enterprise</button>
+                <button class="tab-btn" data-filter="mapping">Mapping & Survey</button>
+                <button class="tab-btn" data-filter="cinema">Cinema & Media</button>
+                <button class="tab-btn" data-filter="consumer">Consumer</button>
+            </div>
+
+            <!-- Grid Dynamic Content -->
+            <div class="grid-layout" id="catalog-grid">
+                
+                <!-- Card 1: DJI Agras T50 -->
+                <div class="product-card show" data-category="agras">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=400&q=80');">
+                        <span class="product-tag agras">DJI Agras</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">DJI Agras T50</h3>
+                        <p class="product-desc">Ultimate agricultural drone designed for heavy-duty spraying and spreading applications. Maximum payload capacity with precision automation.</p>
+                        <div class="product-meta">
+                            <span style="font-weight:bold; color:var(--primary);">KSA Stocked</span>
+                            <a href="#contact" class="product-link">Quote Request &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Matrice 350 RTK -->
+                <div class="product-card show" data-category="enterprise">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80');">
+                        <span class="product-tag enterprise">DJI Enterprise</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Matrice 350 RTK</h3>
+                        <p class="product-desc">The flagship commercial drone platform. Enhanced weather resistance, advanced payload options, and precision RTK positioning.</p>
+                        <div class="product-meta">
+                            <span style="font-weight:bold; color:var(--primary);">Industrial</span>
+                            <a href="#contact" class="product-link">Quote Request &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: DJI Mavic 3 Enterprise -->
+                <div class="product-card show" data-category="mapping">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1579829365841-d883b0df7b9f?auto=format&fit=crop&w=400&q=80');">
+                        <span class="product-tag mapping">Mapping & Survey</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mavic 3 Enterprise (M3E)</h3>
+                        <p class="product-desc">Compact surveying drone featuring a mechanical shutter and 56× zoom camera. Ideal for rapid architectural & land mapping workflows.</p>
+                        <div class="product-meta">
+                            <span style="font-weight:bold; color:var(--primary);">Survey Ready</span>
+                            <a href="#contact" class="product-link">Quote Request &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: DJI Inspire 3 -->
+                <div class="product-card show" data-category="cinema">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=80');">
+                        <span class="product-tag cinema">Cinema & Media</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">DJI Inspire 3</h3>
+                        <p class="product-desc">Full-frame 8K ProRes RAW/CinemaDNB cinematography platform. Centimeter-level RTK positioning for precision cinematic trajectories.</p>
+                        <div class="product-meta">
+                            <span style="font-weight:bold; color:var(--primary);">8K Cinematic</span>
+                            <a href="#contact" class="product-link">Quote Request &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: DJI Mavic 3 Pro -->
+                <div class="product-card show" data-category="consumer">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=400&q=80');">
+                        <span class="product-tag consumer">Consumer High-End</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">DJI Mavic 3 Pro</h3>
+                        <p class="product-desc">Triple-camera flagship consumer drone featuring a Hasselblad main sensor. Professional quality in a compact, portable frame.</p>
+                        <div class="product-meta">
+                            <span style="font-weight:bold; color:var(--primary);">Prosumer</span>
+                            <a href="#contact" class="product-link">Quote Request &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Matrice 30T -->
+                <div class="product-card show" data-category="enterprise">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80');">
+                        <span class="product-tag enterprise">DJI Enterprise</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Matrice 30T (Thermal)</h3>
+                        <p class="product-desc">Integrated thermal, zoom, and wide-angle cameras with laser rangefinder. Engineered for first responders and structural inspections.</p>
+                        <div class="product-meta">
+                            <span style="font-weight:bold; color:var(--primary);">Security/IR</span>
+                            <a href="#contact" class="product-link">Quote Request &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding services-section" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Enterprise Services</h2>
+                <p>We deliver tailored, end-to-end aerial intelligence programs designed specifically for Saudi environments and project scales.</p>
+            </div>
+            <div class="grid-layout">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Mega-Project Inspection</h3>
+                    <p>Continuous aerial progress tracking, asset infrastructure evaluation, and high-fidelity 3D modeling for NEOM, Red Sea, and Qiddiya developments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌾</div>
+                    <h3>Smart Agriculture Support</h3>
+                    <p>Crop health diagnostics using multi-spectral sensors, optimization strategies, and fully automated chemical and fertilizer application using DJI Agras systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🗺️</div>
+                    <h3>Topographic Mapping & Survey</h3>
+                    <p>Centimeter-grade land mapping, LiDAR data extraction, and volumetric calculation for mining, land development, and civil engineering fields.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training & Compliance Section -->
+    <section class="section-padding training-section" id="training">
+        <div class="container training-container">
+            <div class="training-content">
+                <span class="training-badge">GACA Accredited Program</span>
+                <h2>Professional Pilot Training & Licensing</h2>
+                <p>Operate commercially with absolute legal and technical certainty in the Kingdom. Our certified pilot training academy provides comprehensive workflows tailored for national industrial frameworks.</p>
+                <ul class="training-features">
+                    <li>Preparation for GACA commercial drone pilot licensing.</li>
+                    <li>Hands-on operational training with DJI Agras & Matrice systems.</li>
+                    <li>Specialized data-analytics and photogrammetry processing courses.</li>
+                    <li>Corporate risk-management and automated workflow implementation.</li>
+                </ul>
+            </div>
+            <div class="training-visual">
+                <h3>Upcoming Cohorts - Riyadh & Jeddah</h3>
+                <p style="margin-top: 10px; color:#c5a059; font-weight:bold;">Next Intake starts first Sunday of next month.</p>
+                <p style="font-size:14px; margin-top:15px; color:#e0e0e0;">Includes institutional sign-offs, full simulators, multi-payload training field days, and continuous compliance updates.</p>
+                <a href="#contact" class="btn btn-outline" style="margin-top: 25px;">Enroll / Inquire Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section-padding" id="support">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Enterprise Support & Maintenance</h2>
+                <p>Minimize project downtime with our locally based technical support center, authorized repairs, and immediate engineering assistance.</p>
+            </div>
+            <div class="support-grid">
+                <div class="support-box">
+                    <h3 style="color:var(--primary);">🛠️ Local Repair Center</h3>
+                    <p style="color:var(--text-muted); font-size:14px;">In-country physical repair facility in Riyadh equipped with genuine DJI Enterprise components and diagnostic technology.</p>
+                </div>
+                <div class="support-box">
+                    <h3 style="color:var(--primary);">🛡️ SLA Maintenance Agreements</h3>
+                    <p style="color:var(--text-muted); font-size:14px;">Tailored operational support contracts providing hot-swappable replacement drones, scheduled tune-ups, and field engineers.</p>
+                </div>
+                <div class="support-box">
+                    <h3 style="color:var(--primary);">📞 24/7 Priority Support</h3>
+                    <p style="color:var(--text-muted); font-size:14px;">Dedicated direct helpline access for enterprise operators navigating mission-critical infrastructure assignments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding contact-section" id="contact">
+        <div class="container contact-grid">
+            <div class="contact-info-panel">
+                <h3>Connect With Our Drone Specialists</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Whether looking to establish an operational fleet, procure heavy DJI Agras multi-rotors, or license enterprise flight crews, our structural advisors are available.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <div>
+                            <strong>HQ Office:</strong><br>
+                            King Fahd Road, Al Olaya District, Riyadh, Kingdom of Saudi Arabia
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📞</span>
+                        <div>
+                            <strong>Phone Consultation:</strong><br>
+                            +966 11 456 7890
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">✉️</span>
+                        <div>
+                            <strong>Enterprise Procurement:</strong><br>
+                            ops@saudiskytech.com.sa
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="procurementForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name / Company Representative</label>
+                        <input type="text" id="name" class="form-control" required placeholder="e.g., Eng. Ahmed Al-Sudairi">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Organization / Government Entity</label>
+                        <input type="text" id="company" class="form-control" required placeholder="e.g., Agriculture Development Fund">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Corporate Email Address</label>
+                        <input type="email" id="email" class="form-control" required placeholder="name@company.com.sa">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">Primary Solution Interest</label>
+                        <select id="interest" class="form-control">
+                            <option value="agras">DJI Agras (Agriculture Spraying)</option>
+                            <option value="enterprise">Matrice Enterprise Platforms</option>
+                            <option value="mapping">LiDAR / Photogrammetry Mapping</option>
+                            <option value="cinema">Cinematic / Production Media Platforms</option>
+                            <option value="training">GACA Certification & Training Academies</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Detailed Scope & Requirements</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Describe your fleet size, industrial application, or target launch timeline..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Submit Request for Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:var(--white);">SAUDI SKYTECH</h4>
+                <p style="margin-top:15px; font-size:13px; color:#999;">The Kingdom's premier dedicated supplier, service integration firm, and training advisor for commercial grade unmanned aerial vehicle ecosystems.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product Platforms</h4>
+                <ul class="footer-links">
+                    <li><a href="#catalog">DJI Agras Series</a></li>
+                    <li><a href="#catalog">Matrice Enterprise</a></li>
+                    <li><a href="#catalog">Mavic Mapping Solutions</a></li>
+                    <li><a href="#catalog">Cinematography Drones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ecosystem</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Industrial Inspections</a></li>
+                    <li><a href="#training">GACA Licensing</a></li>
+                    <li><a href="#support">SLA Repair Logistics</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance & Frameworks</h4>
+                <p style="font-size:12px; color:#888; line-height:1.4;">All configurations, imports, and operations executed in comprehensive lockstep guidance with the General Authority of Civil Aviation (GACA) and KSA regulatory bylaws.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Saudi SkyTech. All Rights Reserved. Built for Vision 2030 Core Implementations.</p>
+        </div>
+    </footer>
+
+    <!-- Responsive Navigation and Filter Scripts -->
+    <script>
+        // Mobile Navigation Menu Toggle Toggle logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Toggle hamburger animation style representation if needed
+        });
+
+        // Close nav when item clicked on mobile responsive states
+        document.querySelectorAll('.nav-item a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.nav-item a').forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Catalog Sorting Client Side Implementation
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Toggle state presentation updates
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.classList.add('show');
+                    } else {
+                        card.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Sample interactive form interception
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for contacting Saudi SkyTech. An enterprise account manager will contact you within 24 hours with your requested information.');
+            document.getElementById('procurementForm').reset();
+        }
+    </script>
+</body>
+</html>
